@@ -5,8 +5,8 @@ phases:
     commands:
       - echo Found out git commit id
       - |
-        PIPELINE=$(aws --region $CODEBUILD_AGENT_ENV_CODEBUILD_REGION codebuild batch-get-builds --ids="${CODEBUILD_BUILD_ID}" --query 'builds[].initiator' --output text) &&
-        EXECUTION_ID=$(aws --region $CODEBUILD_AGENT_ENV_CODEBUILD_REGION codepipeline get-pipeline-state --name ${PIPELINE#*/} --query 'stageStates[?actionStates[?latestExecution.externalExecutionId==`'${CODEBUILD_BUILD_ID}'`]].latestExecution.pipelineExecutionId' --output text } &&
+        PIPELINE=${aws --region $CODEBUILD_AGENT_ENV_CODEBUILD_REGION codebuild batch-get-builds --ids="${CODEBUILD_BUILD_ID}" --query 'builds[].initiator' --output text} &&
+        EXECUTION_ID=${aws --region $CODEBUILD_AGENT_ENV_CODEBUILD_REGION codepipeline get-pipeline-state --name ${PIPELINE#*/} --query 'stageStates[?actionStates[?latestExecution.externalExecutionId==`'${CODEBUILD_BUILD_ID}'`]].latestExecution.pipelineExecutionId' --output text } &&
         GIT_COMMIT=${aws --region $CODEBUILD_AGENT_ENV_CODEBUILD_REGION  codepipeline get-pipeline-execution --pipeline-name ${PIPELINE#*/} --pipeline-execution-id $EXECUTION_ID --query 'pipelineExecution.artifactRevisions[0].revisionId' --output text} &&
         echo $GIT_COMMIT
 artifacts:

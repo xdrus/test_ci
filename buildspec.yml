@@ -1,0 +1,13 @@
+version: 0.1
+
+phases:
+  pre_build:
+    commands:
+      - echo Some variables...
+      - echo "CODEBUILD_SOURCE_VERSION=$CODEBUILD_SOURCE_VERSION"
+      - echo "CODEBUILD_SOURCE_REPO_URL=$CODEBUILD_SOURCE_REPO_URL"
+      - echo "CODEBUILD_BUILD_ID=$CODEBUILD_BUILD_ID"
+artifacts:
+  files:
+    - **/*
+  discard-paths: no

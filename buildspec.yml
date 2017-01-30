@@ -1,4 +1,5 @@
 version: 0.1
+
 phases:
   build:
     commands:
@@ -8,5 +9,5 @@ phases:
       - echo "CODEBUILD_BUILD_ID=$CODEBUILD_BUILD_ID"
 artifacts:
   files:
-    - **/*
+    - build.sh
   discard-paths: yes

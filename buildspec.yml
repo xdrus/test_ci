@@ -1,7 +1,6 @@
 version: 0.1
-
 phases:
-  pre_build:
+  build:
     commands:
       - echo Some variables...
       - echo "CODEBUILD_SOURCE_VERSION=$CODEBUILD_SOURCE_VERSION"

@@ -9,6 +9,7 @@ phases:
         EXECUTION_ID=$(aws --region $CODEBUILD_AGENT_ENV_CODEBUILD_REGION codepipeline get-pipeline-state --name ${PIPELINE#*/} --query 'stageStates[?actionStates[?latestExecution.externalExecutionId==`'${CODEBUILD_BUILD_ID}'`]].latestExecution.pipelineExecutionId' --output text) && \
         GIT_COMMIT=$(aws --region $CODEBUILD_AGENT_ENV_CODEBUILD_REGION codepipeline get-pipeline-execution --pipeline-name ${PIPELINE#*/} --pipeline-execution-id $EXECUTION_ID --query 'pipelineExecution.artifactRevisions[0].revisionId' --output text) && \
         echo $GIT_COMMIT
+      - echo $CODEBUILD_SOURCE_VERSION
 artifacts:
   files:
     - build.sh

@@ -3,6 +3,8 @@ version: 0.1
 phases:
   build:
     commands:
+      - ls -al
+      - git rev-parse HEAD
       - echo Found out git commit id
       - echo $CODEBUILD_SOURCE_VERSION
       - |

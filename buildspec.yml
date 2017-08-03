@@ -1,6 +1,12 @@
 version: 0.2
-
+env:
+  variables:
+    DEBIAN_FRONTEND: noninteractive
+    
 phases:
+  install:
+    commands:
+      - apt-get -yq --no-install-recommends install time
   build:
     commands:
       - time docker build -t helloworld .

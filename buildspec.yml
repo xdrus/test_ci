@@ -3,15 +3,4 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo Found out git commit id
-      - echo $CODEBUILD_SOURCE_VERSION
-      - echo $CODEBUILD_INITIATOR
-      - echo $CODEBUILD_BUILD_ID
-      - |
-        EXECUTION_ID=$(aws --region $AWS_REGION codepipeline get-pipeline-state --name ${CODEBUILD_INITIATOR#*/} --query 'stageStates[?actionStates[?latestExecution.externalExecutionId==`'${CODEBUILD_BUILD_ID}'`]].latestExecution.pipelineExecutionId' --output text) && \
-        GIT_COMMIT=$(aws --region $AWS_REGION codepipeline get-pipeline-execution --pipeline-name ${CODEBUILD_INITIATOR#*/} --pipeline-execution-id $EXECUTION_ID --query 'pipelineExecution.artifactRevisions[0].revisionId' --output text) && \
-        echo $GIT_COMMIT
-artifacts:
-  files:
-    - build.sh
-  discard-paths: yes
+      - time docker build -t helloworld .

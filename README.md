@@ -1,4 +1,4 @@
 # test_ci
-## readme
-### TODO:
-add readme
+## README
+### Description
+Git is really really cool.

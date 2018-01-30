@@ -6,6 +6,7 @@ env:
 phases:
   install:
     commands:
+      - apt-get update
       - apt-get -yq --no-install-recommends install time
   build:
     commands:

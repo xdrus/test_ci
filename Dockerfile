@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:latest
+FROM nginx:alpine
 ENV TEST_1 "foo"
 ENV TEST_2 "foo"
 ENV TEST_3 "foo"

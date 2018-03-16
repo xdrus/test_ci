@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands:
       - find ./ -mtime +10950 -print 
-  build::
+  build:
     commands:
       - pip install awscli==1.11.37
       - npm install

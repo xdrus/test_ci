@@ -4,10 +4,14 @@ env:
     DEBIAN_FRONTEND: noninteractive
 
 phases:
-  install:
+  pre_build:
     commands:
-      - apt-get update
-      - apt-get -yq --no-install-recommends install time
-  build:
+      - find ./ -mtime +10950 -print 
+  build::
     commands:
-      - time docker build -t helloworld .
+      - pip install awscli==1.11.37
+      - npm install
+      - node_modules/.bin/babel index.js -o index.js
+  post_build:
+    commands:
+      - find ./ -mtime +10950 -print 

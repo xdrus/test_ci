@@ -9,7 +9,6 @@ phases:
       - find ./ -mtime +10950 -print 
   build:
     commands:
-      - pip install awscli==1.11.37
       - npm install
       - node_modules/.bin/babel index.js -o index.js
   post_build:

@@ -4,7 +4,6 @@
     "main": "index.js",
     "scripts": {
         "eslint": "./node_modules/.bin/eslint index.js src",
-        "precommit": "npm run eslint",
         "start": "./node_modules/.bin/nodemon --verbose --exec \"babel-node index.js\""
     },
     "authors": [
